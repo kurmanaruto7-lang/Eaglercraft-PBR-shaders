@@ -19,7 +19,7 @@
 			window.addEventListener("load", () => {
 				if(document.location.href.startsWith("file:")) {
 					alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
-				}else {
+				} else {
 					
 					// %%%%%%%%% launch options %%%%%%%%%%%%
 					
@@ -42,6 +42,16 @@
 					}
 					
 					main();
+
+					// ===== EAGLERFORGE HACK CLIENT =====
+					setTimeout(() => {
+						const s = document.createElement('script');
+						s.src = 'https://eaglerforge.github.io/EaglerForge/injector.js';
+						s.onload = () => console.log('[EaglerForge] Loaded!');
+						s.onerror = () => console.warn('[EaglerForge] Failed to load - check URL');
+						document.head.appendChild(s);
+					}, 3000);
+					// ===================================
 					
 				}
 			});
